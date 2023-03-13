@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  selector:
+    matchLabels:
+      run: load-balancer-example
+  replicas: 
+  template:
+    metadata:
+      labels:
+        run: load-balancer-example
+    spec:
+      containers:
+        - name: python-api
+          image: saqib11691/python-api:1678460111
+        
+          ports:
+            - containerPort: 5000
+              protocol: TCP
